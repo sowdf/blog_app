@@ -35,12 +35,9 @@ var mod = {
         }
     },
     handlePage: function(pathname, req, res) {
-        console.log(pathname);
         switch (pathname) {
-
             case '/ajax':
                 var getReqQuery = querystring.parse(URL.parse(req.url).search);
-                console.log(getReqQuery);
                 decide(getReqQuery, function(data) {
                     res.writeHead(200, {
                         'Content-Type': 'application/json'
@@ -73,7 +70,6 @@ function sendAdmin(res) {
 function handlePost(req, res) {
     req.on('data', function(chunk) {
         var getData = querystring.parse(chunk.toString());
-        console.log(getData);
         if (getData.password || getData.password === '') {
             if (getData.password === MY_PASS_WORD) {
                 sendAdmin(res);
@@ -122,9 +118,13 @@ function getList(query, callback, select) {
         list.toArray(function(err, doc) {
             assert.equal(err, null);
             var output = {};
-            var start = (query['page'] - 1) * query['?itemNum'];
+            var start = -1 *(query['page'] - 1) * query['?itemNum'];
             output.total = doc.length;
-            output.list = doc.slice(start, start + parseInt(query['?itemNum']));
+            if (start !== 0){
+                output.list = doc.slice(start - parseInt(query['?itemNum']), start);
+            } else {
+                output.list = doc.slice(-1*parseInt(query['?itemNum']));
+            }
             callback(JSON.stringify(output));
         });
     }, select);

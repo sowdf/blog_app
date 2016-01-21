@@ -58,7 +58,7 @@ var getTotal = {};
 function articleListCallBack(data) {
     var contentList = document.getElementsByClassName('content-articles')[0];
     var articleList = data.list;
-    for (var i = 0; i < articleList.length; i++) {
+    for (var i = articleList.length-1; i >= 0; i--) {
         var title = articleList[i].title;
         var tag = articleList[i].tag;
         var main = articleList[i].main;

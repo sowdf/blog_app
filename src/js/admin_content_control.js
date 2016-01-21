@@ -51,7 +51,7 @@ function articleListCallBack(data) {
     var nextBtn = document.getElementsByClassName('admin-next-btn')[0];
     var currentPage = location.hash.match(/#[0-9]+/)[0].slice(1);
     var content = document.getElementsByTagName('tbody')[0];
-    for (var i = 0; i < articleList.length; i++) {
+    for (var i = articleList.length-1; i >= 0; i--) {
         var j = i;
         var thisItem = new create.tableItem();
         thisItem._fill(data.list[j]);
