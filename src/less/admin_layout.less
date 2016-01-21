@@ -1,0 +1,170 @@
+.admin-container {
+    min-height: 100%;
+    background: @UIBlue;
+}
+.admin-articles h1 {
+    color: @UIRed;
+    padding: 1em;
+    font-size: 3em;
+}
+th {
+    color: @UIRed;
+    background-color: @UIBrown;
+    font-size: 1.6em;
+}
+td {
+    color: @UIGrey;
+    background-color: @UIRed;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    a {
+        color: @UIGrey;
+        cursor: pointer;
+    }
+}
+td:hover {
+    color: @UIRed;
+    a {
+        color: @UIRed;
+    }
+    background-color: @UIGrey;
+}
+th, td {
+    text-align: left;
+}
+th, td {
+    width: 8em;
+    max-width: 8em;
+    line-height: 2;
+    text-align: center;
+}
+th:nth-child(2), td:nth-child(2) {
+    max-width: 16em;
+    white-space: nowrap;
+}
+th:first-child, td:first-child {
+    white-space: nowrap;
+}
+.admin-articles {
+    height: 100%;
+    transform: translate3d(0 , -100%, 0);
+    transition: all 0.5s;
+}
+.admin-articles-on {
+    transform: translate3d(0, 0 , 0)
+}
+.articles-table {
+    display: inline-block;
+}
+.admin-articles {
+    text-align: center;
+}
+.admin-write-btn {
+    display: block;
+    position: fixed;
+    right: 10%;
+    top: 10%;
+    width: 3em;
+    z-index: 12;
+    height: 3em;
+    border-radius: 3em;
+    background-color: @UIRed;
+}
+.admin-write {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    width: 100%;
+    form {
+        padding-top: 3em;
+        text-align: left;
+        width: 80%;
+        margin: 0 auto;
+    }
+    div {
+        margin-bottom: 1.2em;
+    }
+    label {
+        color: @UIRed;
+        margin-right: 0.4em;
+        margin-bottom: 0.1em;
+    }
+    input, textarea {
+        color: @UIBrown;
+        padding: 0.1em 0.4em;
+    }
+    label, input, textarea {
+        display: block;
+        font-size: 1.6em;
+        font-weight: 700;
+        line-height: 1.5;
+        border: 0;
+        border-radius: 0.4em;
+        width: 100%;
+    }
+    input:focus, textarea:focus {
+        outline: none;
+    }
+    textarea {
+        resize: none;
+        min-height: 540px;
+        padding: 1em;
+        font-size: 2em;
+    }
+    button {
+        display: block;
+        margin: 0 auto;
+        color: @UIGrey;
+        font-size: 1.6em;
+        font-weight: 700;
+        padding: 0.6em 1em;
+        border-radius: 1em;
+        background-color: @UIRed;
+        box-shadow: 1px 1px 1px 1px @UIBrown;
+        cursor: pointer;
+    }
+    button:hover {
+        box-shadow: 0 0 0 0;
+    }
+    transform: translate3d(-100%, 0, 0);
+    transition: all 0.5s;
+}
+.admin-write-on {
+    transform: translate3d(0, 0, 0);
+}
+
+
+.admin-write-back:hover {
+    width: 4em;
+    height: 4em;
+    left: 1em;
+}
+.admin-write-back:hover .admin-write-back-arrow {
+    transform: rotate(360deg);
+}
+.admin-write-back-arrow {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: rotate(0);
+    transition: all 0.2s;
+}
+.admin-prev-btn,.admin-next-btn {
+    width: 3em;
+    height: 3em;
+    position: fixed;
+    background-color: @UIRed;
+    right: 10%;
+    cursor: pointer;
+}
+.admin-prev-btn {
+    bottom: 8em;
+}
+.admin-next-btn {
+    bottom: 4em;
+}
+.prevent-btn {
+    cursor: not-allowed;
+    opacity: 0.8;
+}

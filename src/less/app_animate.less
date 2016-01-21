@@ -1,0 +1,68 @@
+.content:after {
+    transition: all 0.5s;
+}
+.sidebar-open .content {
+    transform: translate3d(230px, 0, 0);
+    @media screen {
+        @media (min-width: @s) {
+            transform: translate3d(300px, 0, 0);
+        }
+    }
+}
+
+/*cover*/
+.cover {
+    transform: translate3d(0, -100%, 0) rotateX(90deg);
+    transition: all 0.5s;
+}
+.cover-on {
+    transform: translate3d(0, 0, 0) rotateY(0);
+}
+.dollars:hover .dollars-circle {
+    transform: rotateX(180deg);
+}
+.dollars:hover .dollars-enter {
+    transform: rotateX(0deg);
+}
+.dollars-circle {
+    background: no-repeat center/cover url("../images/cover.gif") ;
+    transform: rotateX(0);
+    transition: all 2s;
+    backface-visibility: hidden;
+}
+.dollars-enter {
+    font-weight: 700;
+    font-size: 4em;
+    color: @UIRed;
+    transform: rotateX(-180deg);
+    transition: all 2s;
+    backface-visibility: hidden;
+}
+.enter { 
+    transform: translate3d(0, -100%, 0) rotateX(90deg);
+    transition: all 0.5s;
+}
+.enter-on {
+    transform: translate3d(0, 0, 0) rotateY(0);
+}
+/*article list*/
+.content-articles {
+    transform: translate3d(0, -100%, 0);
+    transition: all 0.5s;
+}
+.articles-item-rotate-front {
+    transform: rotateX(0deg);
+}
+.articles-item-btn {
+    transform: rotateX(-180deg);
+}
+.articles-item-rotate:hover .articles-item-rotate-front {
+  transform: rotateX(180deg);
+}
+.articles-item-rotate:hover .articles-item-btn {
+  transform: rotateX(0deg);
+}
+.content-articles.content-articles-on {
+  position: static;
+  transform: translate3d(0, 0, 0);
+}

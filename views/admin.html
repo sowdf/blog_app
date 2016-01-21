@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html">
+	<meta content="initial-scale=1,maximum-scale=1,width=device-width" name="viewport">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Dumplings'Blog</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="3rd/css/monokai-sublime.css">
+	
+	<link rel="shortcut icon" href="images/Favicon.ico">
+	<link rel="bookmark" href="images/Favicon.ico">
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-articles">
+            <h1>文章列表</h1>
+            <div class="articles-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Title</th>
+                            <th>Tag</th>
+                            <th>Modify</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <a class="admin-write-btn" href="#write"></a>
+            <a class="admin-prev-btn"></a>
+            <a class="admin-next-btn"></a>
+        </div>
+        <div class="admin-write">
+            <a class="admin-write-back" href="#articles">
+                <div class="admin-write-back-arrow"></div>
+            </a>
+            <form method="POST">
+                <div class="write-title">
+                    <label for="title">文章标题</label>
+                    <input type="text" name="title">
+                </div>
+                <div class="write-tag">
+                    <label for="tag">本文标签</label>
+                    <input type="text" name="tag">
+                </div>
+                <div class="write-main">
+                    <label for="main">正文内容</label>
+                    <textarea class="main-edit" name="main"></textarea>
+                    <div class="main-preview MarkDown"></div>
+                    <div class="write-fullscreen-btn"></div>
+                    <div class="write-switch-btn"></div>
+                </div>
+                <button class="write-submit" type="submit">发布</button>
+            </form>
+        </div>
+    </div>
+    <script src="3rd/js/highlight.pack.js"></script>
+    <script src="3rd/js/markdown.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

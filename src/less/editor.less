@@ -1,0 +1,99 @@
+.write-main {
+    position:relative;
+}
+    
+.main-preview {
+    position: absolute;
+    top: 1.6em;
+    margin: 1em 0 0 !important;
+    padding: 1em;
+    width: 100%;
+    height: 540px;
+    color: @UIGrey !important;
+    background-color: #23241f;
+    z-index: -1;
+    font-size: 1em;
+    font-weight: 700;
+    line-height: 1.5;
+    border: 0;
+    border-radius: 0.4em;
+}
+
+.write-switch-btn {
+    position: absolute;
+    z-index: 20;
+    right: 1em;
+    bottom: 0;
+    width: 2em;
+    height: 2em;
+    border-radius: 2em;
+    background-color: @UIRed;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+.write-switch-btn:hover {
+    opacity: 1;
+}
+.preview-on .main-preview {
+    z-index: 12;
+}
+.write-fullscreen-btn {
+    position: absolute;
+    z-index: 20;
+    right: 1em;
+    top: 3em;
+    width: 2em;
+    height: 2em;
+    border-radius: 2em;
+    background-color: @UIBlue;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+.write-fullscreen-btn:hover {
+    opacity: 1;
+}
+.fullscreen-on .main-edit {
+    position:fixed;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    border-radius: 0;
+    font-size: 1.4em;
+    background-color: @UIGrey;
+}
+.fullscreen-on .main-preview {
+    position:fixed;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: 20;
+    border-radius: 0;
+    margin: 0 !important;
+    font-size: 1.4em;
+}
+.fullscreen-on .write-fullscreen-btn {
+    position: fixed;
+    right: 2em;
+    top: 2em;
+}
+.admin-write-back {
+    display: block;
+    position: absolute;
+    width: 2em;
+    height: 4em;
+    border-radius: 2em;
+    z-index: 12;
+    top: 50%;
+    left: 2em;
+    background-color: @UIRed;
+    transition: all 0.2s;
+}
+.main-preview {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

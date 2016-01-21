@@ -1,0 +1,22 @@
+{
+  "name": "blog_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-less": "^3.0.5",
+    "mongodb": "^2.1.4",
+    "node": "^0.0.0",
+    "gulp-minify-css": "^1.2.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
