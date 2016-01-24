@@ -1,7 +1,7 @@
 .write-main {
-    position:relative;
+    position: relative;
 }
-    
+
 .main-preview {
     position: absolute;
     top: 1.6em;
@@ -32,12 +32,15 @@
     cursor: pointer;
     transition: opacity 0.5s;
 }
+
 .write-switch-btn:hover {
     opacity: 1;
 }
+
 .preview-on .main-preview {
     z-index: 12;
 }
+
 .write-fullscreen-btn {
     position: absolute;
     z-index: 20;
@@ -51,11 +54,13 @@
     cursor: pointer;
     transition: opacity 0.5s;
 }
+
 .write-fullscreen-btn:hover {
     opacity: 1;
 }
+
 .fullscreen-on .main-edit {
-    position:fixed;
+    position: fixed;
     width: 50%;
     height: 100%;
     top: 0;
@@ -65,8 +70,9 @@
     font-size: 1.4em;
     background-color: @UIGrey;
 }
+
 .fullscreen-on .main-preview {
-    position:fixed;
+    position: fixed;
     width: 50%;
     height: 100%;
     top: 0;
@@ -76,11 +82,13 @@
     margin: 0 !important;
     font-size: 1.4em;
 }
+
 .fullscreen-on .write-fullscreen-btn {
     position: fixed;
     right: 2em;
     top: 2em;
 }
+
 .admin-write-back {
     display: block;
     position: absolute;
@@ -93,6 +101,7 @@
     background-color: @UIRed;
     transition: all 0.2s;
 }
+
 .main-preview {
     overflow-y: scroll;
     overflow-x: hidden;

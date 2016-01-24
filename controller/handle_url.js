@@ -79,7 +79,7 @@ function handlePost(req, res) {
                 });
                 res.end();
             }
-        } else if(getData.title) {
+        } else if (getData.title) {
             insertArt(getData);
             res.writeHead(301, {
                 location: '/'
@@ -118,12 +118,12 @@ function getList(query, callback, select) {
         list.toArray(function(err, doc) {
             assert.equal(err, null);
             var output = {};
-            var start = -1 *(query['page'] - 1) * query['?itemNum'];
+            var start = -1 * (query['page'] - 1) * query['?itemNum'];
             output.total = doc.length;
-            if (start !== 0){
+            if (start !== 0) {
                 output.list = doc.slice(start - parseInt(query['?itemNum']), start);
             } else {
-                output.list = doc.slice(-1*parseInt(query['?itemNum']));
+                output.list = doc.slice(-1 * parseInt(query['?itemNum']));
             }
             callback(JSON.stringify(output));
         });
@@ -168,7 +168,7 @@ function insertArt(query) {
     thisArticle.tag = query.tag;
     thisArticle.main = query.main;
     thisArticle.date = date.getFullYear() + '\-' + (date.getMonth() + 1) + '\-' + date.getDate();
-    
+
     if (query.exist === 'true') {
         articleModel.update(parseInt(query.id), thisArticle);
     } else {

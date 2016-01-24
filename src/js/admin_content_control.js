@@ -36,9 +36,7 @@ var adminContentControl = {
                 if (thisHash[0] === '#articles') {
                     adminContentControl.getArticleList();
                 } else if (thisHash[0] === '#write' && thisHash.length === 2) {
-
                     adminContentControl.getArticle();
-
                 }
             }
         });

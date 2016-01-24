@@ -1,7 +1,6 @@
 var pageCtrl = require('./page_ctrl');
 var ajax = require('./ajax');
 var appHashControl = {
-
     sidebar: function() {
         var appContainer = document.getElementsByClassName('app-container')[0];
         var sidebarMobileBtn = document.getElementsByClassName('sidebar-mobile-btn')[0];
@@ -98,9 +97,8 @@ var appHashControl = {
     }
 };
 module.exports = appHashControl;
-
 function IfList() {
-    if ( location.hash.match(/#[0-9]+/) !== null) {
+    if (location.hash.match(/#[0-9]+/) !== null) {
         if (location.hash.match(/#[0-9]+/)[0] === '#1') {
             pageCtrl._listClear();
             return;

@@ -15,7 +15,7 @@ var appContentControl = {
                 currentPage = type;
                 tag = undefined;
             } else {
-                if (thisHash.match(/#[^#]+/g).length === 3){
+                if (thisHash.match(/#[^#]+/g).length === 3) {
                     currentPage = thisHash.match(/#[^#]+/g)[2].replace(/#/, '');
                 } else {
                     location.hash += '#1';
@@ -58,7 +58,7 @@ var getTotal = {};
 function articleListCallBack(data) {
     var contentList = document.getElementsByClassName('content-articles')[0];
     var articleList = data.list;
-    for (var i = articleList.length-1; i >= 0; i--) {
+    for (var i = articleList.length - 1; i >= 0; i--) {
         var title = articleList[i].title;
         var tag = articleList[i].tag;
         var main = articleList[i].main;

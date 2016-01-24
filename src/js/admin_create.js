@@ -6,7 +6,7 @@ var create = {
         var tableTag = document.createElement('TD');
         var tableEdit = document.createElement('TD');
         var tableDelete = document.createElement('TD');
-        var editBtn = document.createElement('A'); 
+        var editBtn = document.createElement('A');
         var deleteBtn = document.createElement('A');
         tableTr.appendChild(tableDate);
         tableTr.appendChild(tableTitle);

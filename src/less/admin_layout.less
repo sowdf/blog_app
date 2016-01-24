@@ -2,26 +2,30 @@
     min-height: 100%;
     background: @UIBlue;
 }
+
 .admin-articles h1 {
     color: @UIRed;
     padding: 1em;
     font-size: 3em;
 }
+
 th {
     color: @UIRed;
     background-color: @UIBrown;
     font-size: 1.6em;
 }
+
 td {
     color: @UIGrey;
     background-color: @UIRed;
     text-overflow: ellipsis;
-    overflow:hidden;
+    overflow: hidden;
     a {
         color: @UIGrey;
         cursor: pointer;
     }
 }
+
 td:hover {
     color: @UIRed;
     a {
@@ -29,36 +33,48 @@ td:hover {
     }
     background-color: @UIGrey;
 }
-th, td {
+
+th,
+td {
     text-align: left;
 }
-th, td {
+
+th,
+td {
     width: 8em;
     max-width: 8em;
     line-height: 2;
     text-align: center;
 }
-th:nth-child(2), td:nth-child(2) {
+
+th:nth-child(2),
+td:nth-child(2) {
     max-width: 16em;
     white-space: nowrap;
 }
-th:first-child, td:first-child {
+
+th:first-child,
+td:first-child {
     white-space: nowrap;
 }
+
 .admin-articles {
     position: fixed;
     height: 100%;
     width: 100%;
-    transform: translate3d(0 , -100%, 0);
+    transform: translate3d(0, -100%, 0);
     transition: all 0.5s;
     text-align: center;
 }
+
 .admin-articles-on {
-    transform: translate3d(0, 0 , 0)
+    transform: translate3d(0, 0, 0)
 }
+
 .articles-table {
     display: inline-block;
 }
+
 .admin-write-btn {
     display: block;
     position: fixed;
@@ -70,6 +86,7 @@ th:first-child, td:first-child {
     border-radius: 3em;
     background-color: @UIRed;
 }
+
 .admin-logout-btn {
     position: fixed;
     left: 10%;
@@ -81,6 +98,7 @@ th:first-child, td:first-child {
     background-color: @UIRed;
     cursor: pointer;
 }
+
 .admin-write {
     position: absolute;
     top: 0;
@@ -101,11 +119,14 @@ th:first-child, td:first-child {
         margin-right: 0.4em;
         margin-bottom: 0.1em;
     }
-    input, textarea {
+    input,
+    textarea {
         color: @UIBrown;
         padding: 0.1em 0.4em;
     }
-    label, input, textarea {
+    label,
+    input,
+    textarea {
         display: block;
         font-size: 1.6em;
         font-weight: 700;
@@ -114,7 +135,8 @@ th:first-child, td:first-child {
         border-radius: 0.4em;
         width: 100%;
     }
-    input:focus, textarea:focus {
+    input:focus,
+    textarea:focus {
         outline: none;
     }
     textarea {
@@ -141,19 +163,21 @@ th:first-child, td:first-child {
     transform: translate3d(-100%, 0, 0);
     transition: all 0.5s;
 }
+
 .admin-write-on {
     transform: translate3d(0, 0, 0);
 }
-
 
 .admin-write-back:hover {
     width: 4em;
     height: 4em;
     left: 1em;
 }
+
 .admin-write-back:hover .admin-write-back-arrow {
     transform: rotate(360deg);
 }
+
 .admin-write-back-arrow {
     position: relative;
     width: 100%;
@@ -161,7 +185,9 @@ th:first-child, td:first-child {
     transform: rotate(0);
     transition: all 0.2s;
 }
-.admin-prev-btn,.admin-next-btn {
+
+.admin-prev-btn,
+.admin-next-btn {
     width: 3em;
     height: 3em;
     position: fixed;
@@ -169,12 +195,15 @@ th:first-child, td:first-child {
     right: 10%;
     cursor: pointer;
 }
+
 .admin-prev-btn {
     bottom: 8em;
 }
+
 .admin-next-btn {
     bottom: 4em;
 }
+
 .prevent-btn {
     cursor: not-allowed;
     opacity: 0.8;

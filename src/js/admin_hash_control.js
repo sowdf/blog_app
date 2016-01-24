@@ -27,7 +27,7 @@ var adminHashCtrl = {
                 case '#write':
                     pageCtrl._on(write);
                     break;
-                default :
+                default:
                     location.hash = '#articles';
             }
         });
@@ -48,35 +48,34 @@ var adminHashCtrl = {
         var adminWrite = document.getElementsByClassName('admin-write')[0];
         var fullScreenBtn = document.getElementsByClassName('write-fullscreen-btn')[0];
         switchBtn.addEventListener('click', function() {
-            if(writeMain.className === 'write-main') {
+            if (writeMain.className === 'write-main') {
                 writeMain.className = 'write-main preview-on';
             } else {
                 writeMain.className = 'write-main';
             }
         });
-        
+
         mainEditor.addEventListener('input', function() {
             var output = markdown.toHTML(mainEditor.value);
-            var a = output.replace(/<code>/g,"<pre><code>");
+            var a = output.replace(/<code>/g, "<pre><code>");
             var b = a.replace(/<\/code>/g, "<\/code><\/pre>");
             prevEditor.innerHTML = b;
             var codes = document.getElementsByTagName('code');
-            for( var i = 0; i < codes.length; i++) {
-                var langType = codes[i].childNodes[0]
-                !langType ? langType = 'code' : langType = langType.data;
+            for (var i = 0; i < codes.length; i++) {
+                var langType = codes[i].childNodes[0] !langType ? langType = 'code' : langType = langType.data;
                 var chose = langType.match(/[A-Za-z][^\s]+/);
-                if (chose !== null && document.readyState ==='complete' && chose !== ['']) {
+                if (chose !== null && document.readyState === 'complete' && chose !== ['']) {
                     codes[i].className = chose;
                 }
             }
             var codes = document.getElementsByTagName('CODE');
-            for (var i = 0; i< codes.length; i++) {
+            for (var i = 0; i < codes.length; i++) {
                 hljs.highlightBlock(codes[i]);
             }
         });
 
         function screenFull() {
-            if(adminWrite.className === 'admin-write admin-write-on') {
+            if (adminWrite.className === 'admin-write admin-write-on') {
                 adminWrite.className = 'admin-write admin-write-on fullscreen-on';
             } else {
                 adminWrite.className = 'admin-write admin-write-on';
@@ -84,10 +83,9 @@ var adminHashCtrl = {
         }
         fullScreenBtn.addEventListener('click', screenFull);
         window.addEventListener('keydown', function(e) {
-            if ( adminWrite.className === 'admin-write admin-write-on' ||
-                 adminWrite.className === 'admin-write admin-write-on fullscreen-on' )
-            {
-                if(e.keyCode === 0x1B) {
+            if (adminWrite.className === 'admin-write admin-write-on' ||
+                adminWrite.className === 'admin-write admin-write-on fullscreen-on') {
+                if (e.keyCode === 0x1B) {
                     screenFull();
                 }
             }
