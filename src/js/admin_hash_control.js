@@ -8,6 +8,7 @@ var adminHashCtrl = {
         var backArrow = document.getElementsByClassName('admin-write-back-arrow')[0];
         var prevArrow = document.getElementsByClassName('admin-prev-btn')[0];
         var nextArrow = document.getElementsByClassName('admin-next-btn')[0];
+        var logoutBtn = document.getElementsByClassName('admin-logout-btn')[0];
         location.hash = '#articles';
         pageCtrl._on(articles);
         adminHashCtrl.editor();
@@ -30,10 +31,14 @@ var adminHashCtrl = {
                     location.hash = '#articles';
             }
         });
+        logoutBtn.addEventListener('click', function() {
+            location.href = location.href.replace(/#[^]+/g, '');
+        });
         font.edit(writeBtn, 0.4, '#fff');
         font.arrow(backArrow, 'left', 0.6, '#fff');
         font.arrow(prevArrow, 'top', 0.6, '#fff');
         font.arrow(nextArrow, 'bottom', 0.6, '#fff');
+        font.logout(logoutBtn, 0.3, '#fff');
     },
     editor: function() {
         var mainEditor = document.getElementsByClassName('main-edit')[0];

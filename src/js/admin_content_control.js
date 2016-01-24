@@ -18,7 +18,7 @@ var adminContentControl = {
         var form = document.getElementsByTagName('form')[0];
         var node = document.createElement("input");
         var id = document.createElement("input");
-        node.name  = 'exist';
+        node.name = 'exist';
         node.value = 'true';
         node.style.display = 'none';
         id.name = 'id';
@@ -35,37 +35,40 @@ var adminContentControl = {
             if (thisHash !== null) {
                 if (thisHash[0] === '#articles') {
                     adminContentControl.getArticleList();
-                } else if(thisHash[0] === '#write' && thisHash.length === 2) {
-                    
+                } else if (thisHash[0] === '#write' && thisHash.length === 2) {
+
                     adminContentControl.getArticle();
-                    
+
                 }
             }
         });
     }
 }
 module.exports = adminContentControl;
+
 function articleListCallBack(data) {
     var articleList = data.list;
     var prevBtn = document.getElementsByClassName('admin-prev-btn')[0];
     var nextBtn = document.getElementsByClassName('admin-next-btn')[0];
     var currentPage = location.hash.match(/#[0-9]+/)[0].slice(1);
     var content = document.getElementsByTagName('tbody')[0];
-    for (var i = articleList.length-1; i >= 0; i--) {
+    for (var i = articleList.length - 1; i >= 0; i--) {
         var j = i;
-        var thisItem = new create.tableItem();
-        thisItem._fill(data.list[j]);
-        var doc = data.list[j].id;
-        thisItem._delete().addEventListener('click', function(){
-            var tbody = document.getElementsByTagName('tbody')[0];
-            var thisLine = event.target.parentElement.parentElement;
-            tbody.removeChild(thisLine);
-            ajax.deleteArt(doc);
-        });
-        thisItem._edit().setAttribute('href', '#write#' + doc)
-        content.appendChild(thisItem._item);
+        (function(j) {
+            var thisItem = new create.tableItem();
+            thisItem._fill(data.list[j]);
+            var doc = data.list[j].id;
+            thisItem._delete().addEventListener('click', function() {
+                var tbody = document.getElementsByTagName('tbody')[0];
+                var thisLine = event.target.parentElement.parentElement;
+                tbody.removeChild(thisLine);
+                ajax.deleteArt(doc);
+            });
+            thisItem._edit().setAttribute('href', '#write#' + doc)
+            content.appendChild(thisItem._item);
+        })(j);
     }
-    if( 20*currentPage < data.total ) {
+    if (20 * currentPage < data.total) {
         var next = location.hash.replace(/#[0-9]+/, '#' + (parseInt(currentPage) + 1));
         nextBtn.setAttribute('href', next);
         nextBtn.className = 'admin-next-btn';
