@@ -52,16 +52,9 @@ var appHashControl = {
             setTimeout(function() {
                 location.reload();
             }, 3000);
-        } else {
-            location.hash = '#cover';
         }
-        var cover = document.getElementsByClassName('cover')[0];
-        var articles = document.getElementsByClassName('content-articles')[0];
-        var detail = document.getElementsByClassName('content-detail')[0];
-        var about = document.getElementsByClassName('content-about')[0];
-        var enter = document.getElementsByClassName('enter')[0];
-        appHashControl.sidebar();
-        window.addEventListener('hashchange', function() {
+
+        function _ctrl() {
             pageCtrl._off(cover);
             pageCtrl._off(articles);
             pageCtrl._off(detail);
@@ -92,11 +85,22 @@ var appHashControl = {
                     pageCtrl._listClear();
                     pageCtrl._on(enter);
                     break;
+                default:
+                    location.hash = '#cover';
             }
-        });
+        }
+        var cover = document.getElementsByClassName('cover')[0];
+        var articles = document.getElementsByClassName('content-articles')[0];
+        var detail = document.getElementsByClassName('content-detail')[0];
+        var about = document.getElementsByClassName('content-about')[0];
+        var enter = document.getElementsByClassName('enter')[0];
+        appHashControl.sidebar();
+        _ctrl();
+        window.addEventListener('hashchange', _ctrl);
     }
 };
 module.exports = appHashControl;
+
 function IfList() {
     if (location.hash.match(/#[0-9]+/) !== null) {
         if (location.hash.match(/#[0-9]+/)[0] === '#1') {

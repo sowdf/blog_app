@@ -62,7 +62,8 @@ var adminHashCtrl = {
             prevEditor.innerHTML = b;
             var codes = document.getElementsByTagName('code');
             for (var i = 0; i < codes.length; i++) {
-                var langType = codes[i].childNodes[0] !langType ? langType = 'code' : langType = langType.data;
+                var langType = codes[i].childNodes[0];
+                !langType ? langType = 'code' : langType = langType.data;
                 var chose = langType.match(/[A-Za-z][^\s]+/);
                 if (chose !== null && document.readyState === 'complete' && chose !== ['']) {
                     codes[i].className = chose;

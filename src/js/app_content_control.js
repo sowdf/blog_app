@@ -38,7 +38,8 @@ var appContentControl = {
     },
     init: function() {
         ajax.getTags(tagList);
-        window.addEventListener('hashchange', function() {
+
+        function _ctrl() {
             var thisHash = location.hash.match(/#[^#]+/);
             var contentList = document.getElementsByClassName('content-articles')[0];
             if (thisHash !== null) {
@@ -48,7 +49,9 @@ var appContentControl = {
                     appContentControl.getOneArticle();
                 }
             }
-        });
+        }
+        _ctrl();
+        window.addEventListener('hashchange', _ctrl);
         scroll(getTotal);
     }
 };
