@@ -50,7 +50,7 @@ var appHashControl = {
             p.style.fontWeight = '700';
             p.style.color = '#d25349';
             setTimeout(function() {
-                location.reload();
+                location.hash = '#cover';
             }, 3000);
         }
 
