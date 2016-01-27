@@ -44,12 +44,10 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var appHashControl = __webpack_require__(7);
-	var appContentControl = __webpack_require__(8);
-
-	appHashControl.init();
-	appContentControl.init();
-
+	var mobileHashControl = __webpack_require__(10);
+	var mobileContentControl = __webpack_require__(11);
+	mobileHashControl.init();
+	mobileContentControl.init();
 
 /***/ },
 /* 1 */,
@@ -134,7 +132,10 @@
 
 
 /***/ },
-/* 7 */
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var pageCtrl = __webpack_require__(2);
@@ -177,20 +178,8 @@
 	        });
 	    },
 	    init: function() {
-	        if (location.pathname !== '/') {
-	            location.pathname = '/';
-	        }
-	        if (location.hash === '#close') {
-	            location.hash = '#enter';
-	            var content = document.getElementsByClassName('enter-content')[0];
-	            var p = content.children[1];
-	            p.innerText = '死';
-	            p.style.fontSize = '4em';
-	            p.style.fontWeight = '700';
-	            p.style.color = '#d25349';
-	            setTimeout(function() {
-	                location.hash = '#cover';
-	            }, 3000);
+	        if (location.pathname !== '/mobile') {
+	            location.pathname = '/mobile';
 	        }
 
 	        function _ctrl() {
@@ -198,7 +187,6 @@
 	            pageCtrl._off(articles);
 	            pageCtrl._off(detail);
 	            pageCtrl._off(about);
-	            pageCtrl._off(enter);
 	            var thisHash = location.hash;
 	            if (thisHash !== '') {
 	                thisHash = thisHash.match(/^\#[^\#]+/)[0];
@@ -220,10 +208,6 @@
 	                    pageCtrl._listClear();
 	                    pageCtrl._on(about);
 	                    break;
-	                case '#enter':
-	                    pageCtrl._listClear();
-	                    pageCtrl._on(enter);
-	                    break;
 	                default:
 	                    location.hash = '#cover';
 	            }
@@ -232,7 +216,6 @@
 	        var articles = document.getElementsByClassName('content-articles')[0];
 	        var detail = document.getElementsByClassName('content-detail')[0];
 	        var about = document.getElementsByClassName('content-about')[0];
-	        var enter = document.getElementsByClassName('enter')[0];
 	        appHashControl.sidebar();
 	        _ctrl();
 	        window.addEventListener('hashchange', _ctrl);
@@ -258,11 +241,11 @@
 
 
 /***/ },
-/* 8 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var ajax = __webpack_require__(6);
-	var create = __webpack_require__(9);
+	var create = __webpack_require__(12);
 	var appContentControl = {
 	    getArticleList: function() {
 	        var thisHash = location.hash;
@@ -394,7 +377,7 @@
 
 
 /***/ },
-/* 9 */
+/* 12 */
 /***/ function(module, exports) {
 
 	var create = {
@@ -402,20 +385,17 @@
 	        var item = document.createElement('DIV');
 	        var title = document.createElement('H3');
 	        var preview = document.createElement('DIV');
-	        var detail = document.createElement('DIV');
 	        var front = document.createElement('SPAN');
 	        var back = document.createElement('A');
 	        item.className = 'content-articles-item';
 	        title.className = 'articles-item-header';
 	        preview.className = 'articles-item-preview markdown';
-	        detail.className = 'articles-item-detail articles-item-rotate';
 	        front.className = 'articles-item-rotate-front';
 	        back.className = 'articles-item-btn';
 	        item.appendChild(title);
 	        item.appendChild(preview);
-	        item.appendChild(detail);
-	        detail.appendChild(front);
-	        detail.appendChild(back);
+	        item.appendChild(back);
+	        item.appendChild(front);
 	        back.innerText = '继续阅读';
 	        this._item = item;
 	        this._title = function(text) {

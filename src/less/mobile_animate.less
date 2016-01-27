@@ -1,0 +1,43 @@
+.content:after {
+    transition: all 0.5s;
+}
+
+.sidebar-open .content {
+    transform: translate3d(230px, 0, 0);
+    @media screen {
+        @media (min-width: @s) {
+            transform: translate3d(300px, 0, 0);
+        }
+    }
+}
+
+
+/*cover*/
+
+.cover {
+    transform: translate3d(0, -100%, 0) rotateX(90deg);
+    transition: all 0.5s;
+}
+
+.cover-on {
+    transform: translate3d(0, 0, 0) rotateY(0);
+}
+
+.dollars-circle {
+    background: no-repeat center/cover url("../images/cover.gif");
+    transform: rotateX(0);
+    transition: all 2s;
+    backface-visibility: hidden;
+}
+
+/*article list*/
+
+.content-articles {
+    transform: translate3d(0, -100%, 0);
+    transition: all 0.5s;
+}
+
+.content-articles.content-articles-on {
+    position: static;
+    transform: translate3d(0, 0, 0);
+}

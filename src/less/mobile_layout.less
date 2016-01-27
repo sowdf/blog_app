@@ -1,0 +1,170 @@
+.cover,
+.app-container,
+.content,
+.sidebar {
+    height: 100%;
+}
+
+.app-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.content {
+    position: relative;
+    overflow-y: scroll;
+    width: 100%;
+    min-height: 100%;
+    background-color: @UIGrey;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.5s;
+}
+
+.content-mask {
+    content: '';
+    position: absolute;
+    z-index: 8;
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0;
+}
+
+.sidebar-open .content-mask {
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+
+/*cover layout*/
+
+.cover-content {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.cover {
+    display: table;
+    position: absolute;
+    background-color: #000;
+    top: 0;
+    right: 0;
+    z-index: 12;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.dollars {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 320px;
+    height: 320px;
+}
+
+.dollars-circle {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+/*article list*/
+
+.content-articles {
+    position: fixed;
+    text-align: center;
+}
+
+.content-articles-item {
+    margin: 0 auto 3em;
+    padding: 3em;
+    box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2);
+}
+
+.articles-item-header {
+    margin-bottom: 0.6em;
+    font-weight: 300;
+    font-size: 2.625em;
+    line-height: 1.3;
+    color: @UIRed;
+}
+
+.articles-item-preview {
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: 0.6em;
+    height: 3.6em;
+    max-width: 50em;
+    line-height: 1.2;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.articles-item-rotate-front,
+.articles-item-btn {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    padding: 0.6em;
+    border: 2px solid transparent;
+    border-radius: 2em;
+    max-width: 20em;
+    font-size: 1em;
+}
+
+.articles-item-btn {
+    color: @UIGrey;
+    background-color: @UIRed;
+}
+
+
+/*detail*/
+
+.content-detail {
+    display: none;
+    margin: 0 auto;
+    padding: 4em 4em;
+    max-width: 80em;
+    min-height: 100%;
+    text-align: center;
+}
+
+.content-detail-title {
+    margin-bottom: 0.6em;
+    font-weight: 300;
+    font-size: 2.625em;
+    line-height: 1.3;
+    color: @UIRed;
+}
+
+.content-detail-main {
+    text-align: left;
+}
+
+.content-detail-date,.content-detail-tag {
+    margin-bottom: 1em;
+    font-size: 1.2em;
+    em {
+        color: @UIBlue;
+    }
+}
+
+.content-detail-main {
+    font-size: 1em;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+.content-detail.content-detail-on {
+    display: block;
+}

@@ -46,12 +46,21 @@ var mod = {
                     res.end();
                 });
                 break;
+            case '/mobile': 
+                sendMobile(res);
             default:
                 req.method === 'POST' ? handlePost(req, res) : sendApp(res);
         }
     }
 };
 module.exports = mod;
+
+function sendMobile(res) {
+    res.writeHead(200, {
+        'Content-Type': 'text/html'
+    });
+    res.end(fs.readFileSync('views/mobile.html'));
+}
 
 function sendApp(res) {
     res.writeHead(200, {

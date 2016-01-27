@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     cssmin = require('gulp-cssnano');
  
 gulp.task('less', function () {
-    gulp.src(['src/less/app.less','src/less/admin.less'])
+    gulp.src(['src/less/app.less','src/less/admin.less','src/less/mobile.less'])
         .pipe(less())
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
