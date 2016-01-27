@@ -8,7 +8,6 @@ var ctrl = {
         ele.className = out;
     },
     _listClear: function() {
-        console.log('clear');
         var list = document.getElementsByClassName('content-articles')[0];
         var items = document.getElementsByClassName('content-articles-item');
         var count = items.length;
