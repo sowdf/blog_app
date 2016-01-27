@@ -8,4 +8,7 @@ http.createServer(function(req, res) {
     var pathname = URL.parse(req.url).pathname;
     handleURL.handleStatic(pathname, res);
     handleURL.handlePage(pathname, req, res);
+    process.on('uncaughtException', function (error) {
+        console.log(error.stack);
+    });
 }).listen(PORT);
