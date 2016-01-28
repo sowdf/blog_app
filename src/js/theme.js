@@ -48,5 +48,5 @@ var themeModule = (function() {
     return {
         initial: init
     };
-}())
+})();
 module.exports = themeModule;
