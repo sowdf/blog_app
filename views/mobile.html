@@ -8,22 +8,56 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dumplings'Blog</title>
-
-    <meta name="keywords" content="萧源, dumplingsblog, xiaoyuan, yuanxiao">
+    <meta name="keywords" content="萧源, 元宵, 元宵元宵君, dumplingsblog, xiaoyuan, yuanxiao, 博客">
+    <meta name="description" content="萧源（元宵）的个人博客">
     <meta name="author" content="萧源, xy610888871@gmail.com">
-
     <meta name="apple-mobile-web-app-title" content="Dumplings'Blog">
     <meta name="format-detection" content="telephone-no">
+    <style type="text/css">
+    .progress-container {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 29;
+        background-color: #000;
+    }
+    
+    .progress {
+        position: fixed;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 0.4em;
+        background-color: #fff;
+        z-index: 30;
+    }
+    
+    .progressbar {
+        position: fixed;
+        top: 50%;
+        left: 0;
+        height: 0.4em;
+        background-image: linear-gradient(180deg, #d25349, #000);
+        z-index: 31;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+    }
+    </style>
     <link rel="apple-touch-icon-precomposed" href="images/Favicon.ico">
-
     <link rel="stylesheet" type="text/css" href="css/mobile.css">
     <link rel="stylesheet" href="3rd/css/github.css">
     <link rel="shortcut icon" href="images/Favicon.ico">
     <link rel="bookmark" href="images/Favicon.ico">
-
 </head>
 
 <body>
+    <div class="progress-container">
+        <div class="progress">
+            <div class="progressbar"></div>
+        </div>
+    </div>
     <div class="app-container">
         <div class="cover cover-on">
             <div class="cover-content">
@@ -71,6 +105,37 @@
     <script src="3rd/js/markdown.js"></script>
     <script src="3rd/js/highlight.pack.js"></script>
     <script src="js/mobile.js"></script>
+    <script type="text/javascript">
+    (function() {
+        var head = document.getElementsByTagName('HEAD')[0];
+        var body = document.getElementsByTagName('BODY')[0];
+        var pro = document.getElementsByClassName('progress-container')[0];
+        var progress = document.getElementsByClassName('progressbar')[0];
+        var script = document.getElementsByTagName('script')[3];
+        var style = document.getElementsByTagName('style')[0];
+
+        function decide() {
+            var width = progress.style.width.match(/[0-9]+/);
+            if (width !== null) {
+                if (window.getComputedStyle(progress).overflow === 'hidden') {
+                    progress.style.width = '100%';
+                    clearInterval(ask);
+                    setTimeout(function(){
+                       head.removeChild(style);
+                        body.removeChild(pro);
+                        body.removeChild(script); 
+                    },500);
+                } else {
+                    progress.style.width = (parseInt(width[0]) + 5) + '%';
+                }
+            } else {
+                progress.style.width = '1%';
+            }
+
+        }
+        var ask = setInterval(decide, 500);
+    })();
+    </script>
 </body>
 
 </html>

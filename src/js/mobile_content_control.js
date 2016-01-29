@@ -114,7 +114,6 @@ function tagList(data) {
 function scroll(data) {
     var windowHeight = window.innerHeight;
     var scroll = document.getElementsByClassName('content')[0];
-    console.log('1');
     scroll.addEventListener('scroll', function() {
 
         var scrollPosition = scroll.scrollTop;
@@ -123,7 +122,6 @@ function scroll(data) {
         if (location.hash.match(/#[0-9]+/) !== null && scrollPosition - scrollHeight + windowHeight === 0 && data.total > items.length) {
             var page = location.hash.match(/#[0-9]+/)[0].slice(1);
             var next = parseInt(page) + 1;
-            console.log(page);
             location.hash = location.hash.replace(/#[0-9]+/, '#' + next);
         }
     });
