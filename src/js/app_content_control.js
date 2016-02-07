@@ -115,11 +115,10 @@ function scroll(data) {
     var windowHeight = window.innerHeight;
     var scroll = document.getElementsByClassName('content')[0];
     scroll.addEventListener('scroll', function() {
-
         var scrollPosition = scroll.scrollTop;
         var scrollHeight = scroll.scrollHeight;
         var items = document.getElementsByClassName('content-articles-item');
-        if (location.hash.match(/#[0-9]+/) !== null && scrollPosition - scrollHeight + windowHeight === 0 && data.total > items.length) {
+        if (location.hash.match(/#[0-9]+/) !== null && scrollPosition - scrollHeight + windowHeight >= -2 && data.total > items.length) {
             var page = location.hash.match(/#[0-9]+/)[0].slice(1);
             var next = parseInt(page) + 1;
             location.hash = location.hash.replace(/#[0-9]+/, '#' + next);
