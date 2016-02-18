@@ -2,7 +2,6 @@ var create = require('./admin_create');
 var ajax = require('./ajax');
 var adminContentControl = {
     getArticleList: function() {
-        var select;
         var currentPage;
         var tag = undefined;
         var itemNum = 20;

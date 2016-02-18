@@ -41,7 +41,6 @@ var appContentControl = {
 
         function _ctrl() {
             var thisHash = location.hash.match(/#[^#]+/);
-            var contentList = document.getElementsByClassName('content-articles')[0];
             if (thisHash !== null) {
                 if (thisHash[0] === '#articles') {
                     appContentControl.getArticleList();
@@ -63,7 +62,6 @@ function articleListCallBack(data) {
     var articleList = data.list;
     for (var i = articleList.length - 1; i >= 0; i--) {
         var title = articleList[i].title;
-        var tag = articleList[i].tag;
         var main = articleList[i].main;
         var link = articleList[i].link;
         var date = articleList[i].date;

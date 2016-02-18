@@ -1,5 +1,4 @@
 var pageCtrl = require('./page_ctrl');
-var ajax = require('./ajax');
 var appHashControl = {
     sidebar: function() {
         var appContainer = document.getElementsByClassName('app-container')[0];

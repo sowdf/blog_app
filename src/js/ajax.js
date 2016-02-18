@@ -1,6 +1,5 @@
 function AJAX(method, URL, async, type, callback) {
     var xml = new XMLHttpRequest();
-    xml.open(method, URL, async);
     xml.responseType = type;
     xml.onreadystatechange = function() {
         if (xml.readyState == 4 && xml.status == 200) {
@@ -8,6 +7,10 @@ function AJAX(method, URL, async, type, callback) {
             callback(getRes);
         }
     };
+    xml.onerror = function (e) {
+        console.error(xml.statusText);
+    };
+    xml.open(method, URL, async);
     xml.send();
 }
 var ajaxReq = {

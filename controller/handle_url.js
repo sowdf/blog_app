@@ -7,7 +7,7 @@ var articleModel = require('./../model/article_model');
 
 var MY_PASS_WORD = '****';
 var mod = {
-    handleStatic: function(pathname, res) {
+    handleStatic: function(db, pathname, res) {
         var type = pathname.match(/(\.[^\.]+)$/);
         type === null ? type = pathname : type = type[0];
         switch (type) {
@@ -34,11 +34,11 @@ var mod = {
                 break;
         }
     },
-    handlePage: function(pathname, req, res) {
+    handlePage: function(db, pathname, req, res) {
         switch (pathname) {
             case '/ajax':
                 var getReqQuery = querystring.parse(URL.parse(req.url).search);
-                decide(getReqQuery, function(data) {
+                decide(db, getReqQuery, function(data) {
                     res.writeHead(200, {
                         'Content-Type': 'application/json'
                     });
@@ -49,7 +49,7 @@ var mod = {
             case '/mobile': 
                 sendMobile(res);
             default:
-                req.method === 'POST' ? handlePost(req, res) : sendApp(res);
+                req.method === 'POST' ? handlePost(db, req, res) : sendApp(res);
         }
     }
 };
@@ -76,7 +76,7 @@ function sendAdmin(res) {
     res.end(fs.readFileSync('views/admin.html'));
 }
 
-function handlePost(req, res) {
+function handlePost(db, req, res) {
     req.on('data', function(chunk) {
         var getData = querystring.parse(chunk.toString());
         if (getData.password || getData.password === '') {
@@ -89,7 +89,7 @@ function handlePost(req, res) {
                 res.end();
             }
         } else if (getData.title) {
-            insertArt(getData);
+            insertArt(db, getData);
             res.writeHead(301, {
                 location: '/'
             });
@@ -98,32 +98,32 @@ function handlePost(req, res) {
     });
 }
 
-function decide(query, callback) {
+function decide(db, query, callback) {
     if (query['?itemNum']) {
         if (!query['tag']) {
-            getList(query, callback);
+            getList(db, query, callback);
         } else {
-            getList(query, callback, {
+            getList(db, query, callback, {
                 tag: query['tag']
             });
         }
     }
     if (query['?id']) {
-        article(query, callback);
+        article(db, query, callback);
     }
     if (query['?tags']) {
-        tags(query, callback);
+        tags(db, query, callback);
     }
     if (query['?delete']) {
-        deleteArt(query, callback);
+        deleteArt(db, query, callback);
     }
 }
 
-function getList(query, callback, select) {
+function getList(db, query, callback, select) {
     if (!select) {
         var select = undefined;
     }
-    articleModel.findList(function(list) {
+    articleModel.findList(db, function(list) {
         list.toArray(function(err, doc) {
             assert.equal(err, null);
             var output = {};
@@ -139,8 +139,8 @@ function getList(query, callback, select) {
     }, select);
 }
 
-function tags(query, callback) {
-    articleModel.findList(function(list) {
+function tags(db, query, callback) {
+    articleModel.findList(db, function(list) {
         list.toArray(function(err, doc) {
             assert.equal(err, null);
             var obj = {};
@@ -154,9 +154,9 @@ function tags(query, callback) {
     });
 }
 
-function article(query, callback) {
+function article(db, query, callback) {
     var num = parseInt(query['?id']);
-    articleModel.findOne(num, function(list) {
+    articleModel.findOne(db, num, function(list) {
         list.toArray(function(err, doc) {
             assert.equal(err, null);
             var output = doc[0];
@@ -165,12 +165,12 @@ function article(query, callback) {
     });
 }
 
-function deleteArt(query, callback) {
+function deleteArt(db, query, callback) {
     var num = parseInt(query['id']);
-    articleModel.remove(num);
+    articleModel.remove(db, num);
 }
 
-function insertArt(query) {
+function insertArt(db, query) {
     var thisArticle = {};
     var date = new Date();
     thisArticle.title = query.title;
@@ -179,10 +179,10 @@ function insertArt(query) {
     thisArticle.date = date.getFullYear() + '\-' + (date.getMonth() + 1) + '\-' + date.getDate();
 
     if (query.exist === 'true') {
-        articleModel.update(parseInt(query.id), thisArticle);
+        articleModel.update(db, parseInt(query.id), thisArticle);
     } else {
         thisArticle.id = Date.now();
         thisArticle.link = '#detail#id=' + thisArticle.id;
-        articleModel.insert(thisArticle);
+        articleModel.insert(db, thisArticle);
     }
 }
